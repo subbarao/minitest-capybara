@@ -1,0 +1,42 @@
+# minitest-capybara
+
+This gem adds to minitest/spec the functionality that allows you to change Capybara drivers by passing parameters to `it`, similarly to RSpec.
+
+## Usage
+
+To install, add this to your Gemfile and do a `bundle install`:
+
+    gem "minitest-capybara", "~> 0.0.1"
+
+Then in your minitest/specs (or a `spec_helper` that they all require) add:
+
+    require 'minitest/capybara'
+
+Now you can change the driver to Selenium by passing the parameter `:js => true':
+
+    describe "something under test" do
+      it "does not use selenium for this test" do
+        visit "/"
+        assert body.has_content?("Hello world")
+      end
+
+      it "does use selenium for this test", :js => true do
+        visit "/"
+        click_link "Hide" # a link that uses a javascript click event, for example
+        assert body.has_no_link?("Hide")
+      end
+    end
+
+## Future improvements
+
+* Support :js => true on `describe` as well
+* Support drivers other than rack_test and selenium (currently the driver will be switched back to rack_test when an example is finished, and setting Capybara.javascript_driver has no effect)
+* Support a :driver parameter to switch to a specific driver
+
+## Inspiration
+
+Many thanks to those who have worked on RSpec, Capybara and minitest for making such awesome tools.
+
+## License
+
+Released under the MIT license. See LICENSE.
