@@ -4,7 +4,7 @@ module MiniTest
     def self.included(base)
       base.class_eval do; class << self
 
-        def it_with_capybara desc, params={}, &block
+				def it_with_capybara desc = "anonymous", params = {}, &block
           if params[:js] == true
 
             javascript_block = proc do
