@@ -8,9 +8,9 @@ module MiniTest
           if params[:js] == true
 
             javascript_block = proc do
-              Capybara.current_driver = :selenium
+              Capybara.current_driver = Capybara.javascript_driver
               block.call
-              Capybara.current_driver = :rack_test
+              Capybara.current_driver = Capybara.default_driver
             end
 
             self.it_old desc, &javascript_block

@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{Adding :js => true functionality to minitest}
   s.description = %q{Adding RSpec's :js => true functionality to minitest so that you can change Capybara drivers per 'describe' or 'it'}
 
-  s.add_runtime_dependency "capybara", "~> 0.4"
+  s.add_runtime_dependency "capybara", "~> 1.1.2"
 
   s.add_development_dependency "sinatra"
   s.add_development_dependency "rack"
